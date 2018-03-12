@@ -1,4 +1,4 @@
-Bolt Adapter [![Build Status](https://travis-ci.org/wirepair/bolt-adapter.svg?branch=master)](https://travis-ci.org/wirepair/bolt-adapter) [![Coverage Status](https://coveralls.io/repos/github/wirepair/bolt-adapter.svg?branch=master)](https://coveralls.io/github/wirepair/bolt-adapter?branch=master) [![Godoc](https://godoc.org/github.com/wirepair/bolt-adapter?status.svg)](https://godoc.org/github.com/wirepair/bolt-adapter)
+Bolt Adapter [![Build Status](https://travis-ci.org/wirepair/bolt-adapter.svg?branch=master)](https://travis-ci.org/wirepair/bolt-adapter) [![Godoc](https://godoc.org/github.com/wirepair/bolt-adapter?status.svg)](https://godoc.org/github.com/wirepair/bolt-adapter)
 ====
 
 Bolt Adapter is the [BoltDB](https://github.com/boltdb/bolt) adapter for [Casbin](https://github.com/casbin/casbin). With this library, Casbin can load a policy from a previously opened BoltDB or save the policy to it.
