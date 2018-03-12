@@ -3,8 +3,5 @@ language: go
 go:
     - 1.9
 
-install:
-    - make install-tools
-
 script:
     - go test -v .
