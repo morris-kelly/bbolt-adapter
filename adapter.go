@@ -9,6 +9,9 @@ import (
 	bolt "go.etcd.io/bbolt"
 )
 
+// Check interface implementation
+var _ persist.Adapter = (*Adapter)(nil)
+
 // ErrEmptyPolicy will be returned if the bucket doesn't have any policy data
 var ErrEmptyPolicy = errors.New("policy was empty")
 
