@@ -1,11 +1,11 @@
-Bolt Adapter [![Build Status](https://travis-ci.org/wirepair/bolt-adapter.svg?branch=master)](https://travis-ci.org/wirepair/bolt-adapter) [![Godoc](https://godoc.org/github.com/wirepair/bolt-adapter?status.svg)](https://godoc.org/github.com/wirepair/bolt-adapter)
+
 ====
 
-Bolt Adapter is the [BoltDB](https://github.com/boltdb/bolt) adapter for [Casbin](https://github.com/casbin/casbin). With this library, Casbin can load a policy from a previously opened BoltDB or save the policy to it.
+Bolt Adapter is the [BboltDB](https://github.com/etcd-io/bbolt) adapter for [Casbin](https://github.com/casbin/casbin). With this library, Casbin can load a policy from a previously opened BoltDB or save the policy to it.
 
 ## Installation
 
-    go get github.com/wirepair/bolt-adapter
+    go get github.com/morris-kelly/bbolt-adapter
 
 ## Simple Example
 
@@ -16,10 +16,10 @@ import (
 	"flag"
 	"log"
 
-	"github.com/boltdb/bolt"
+	"go.etcd.io/bbolt"
 	"github.com/casbin/casbin"
 	"github.com/casbin/casbin/persist"
-	"github.com/wirepair/bolt-adapter"
+	"github.com/morris-kelly/bolt-adapter"
 )
 
 var populate bool

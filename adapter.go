@@ -4,15 +4,13 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/boltdb/bolt"
 	"github.com/casbin/casbin/model"
 	"github.com/casbin/casbin/persist"
+	bolt "go.etcd.io/bbolt"
 )
 
-var (
-	// ErrEmptyPolicy will be returned if the bucket doesn't have any policy data
-	ErrEmptyPolicy = errors.New("policy was empty")
-)
+// ErrEmptyPolicy will be returned if the bucket doesn't have any policy data
+var ErrEmptyPolicy = errors.New("policy was empty")
 
 // CasbinRule represents a policy type and their values
 type CasbinRule struct {
@@ -56,7 +54,6 @@ func (a *Adapter) open() {
 		_, err := tx.CreateBucketIfNotExists([]byte(a.key))
 		return err
 	})
-
 	// i don't like panic'ing here but that's what the other adapters do.
 	if err != nil {
 		panic(err)
@@ -137,7 +134,6 @@ func savePolicyLine(ptype string, rule []string) CasbinRule {
 
 // SavePolicy saves policy to database.
 func (a *Adapter) SavePolicy(model model.Model) error {
-
 	var lines []CasbinRule
 
 	for ptype, ast := range model["p"] {
