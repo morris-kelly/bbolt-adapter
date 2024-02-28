@@ -1,4 +1,4 @@
-module bbolt-adapter
+module github.com/morris-kelly/bbolt-adapter
 
 go 1.21.0
 
