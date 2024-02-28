@@ -5,8 +5,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/casbin/casbin"
-	"github.com/casbin/casbin/util"
+	"github.com/casbin/casbin/v2"
+	"github.com/casbin/casbin/v2/util"
 	bolt "go.etcd.io/bbolt"
 )
 
@@ -22,7 +22,10 @@ func testGetPolicy(t *testing.T, e *casbin.Enforcer, res [][]string) {
 func TestAdapter(t *testing.T) {
 	// Because the DB is empty at first,
 	// so we need to load the policy from the file adapter (.CSV) first.
-	e := casbin.NewEnforcer("examples/rbac_model.conf", "examples/rbac_policy.csv")
+	e, err := casbin.NewEnforcer("examples/rbac_model.conf", "examples/rbac_policy.csv")
+	if err != nil {
+		t.Fatalf("error creating enforcer: %s\n", err)
+	}
 	db, err := bolt.Open("testdata/db.dat", 0o600, nil)
 	if err != nil {
 		t.Fatalf("error opening db: %s\n", err)
@@ -56,6 +59,9 @@ func TestAdapter(t *testing.T) {
 	// Create an adapter and an enforcer.
 	// NewEnforcer() will load the policy automatically.
 	a = NewAdapter(db)
-	e = casbin.NewEnforcer("examples/rbac_model.conf", a)
+	e, err = casbin.NewEnforcer("examples/rbac_model.conf", a)
+	if err != nil {
+		t.Fatalf("error creating enforcer: %s\n", err)
+	}
 	testGetPolicy(t, e, [][]string{{"alice", "data1", "read"}, {"bob", "data2", "write"}, {"data2_admin", "data2", "read"}, {"data2_admin", "data2", "write"}})
 }
